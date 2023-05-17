@@ -10,6 +10,7 @@ class KeyboardTsLcd{
         void eRead();
     private:
         LedLcd* pLed;
+        LedLcd* pLedReverse;
         KeyboardTs* pKeyboard;
 };
 
