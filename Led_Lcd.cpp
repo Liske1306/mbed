@@ -1,7 +1,10 @@
 #include "Led_Lcd.h"
 
-void LedLcd::On(uint8_t ucButtonNumber){
+LedLcd::LedLcd(){
     lcd.Clear(LCD_COLOR_BLACK);
+}
+
+void LedLcd::On(uint8_t ucButtonNumber){
     lcd.SetFont(&Font24);
     for(uint8_t ucButtonInit=0;ucButtonInit<=3;ucButtonInit++){
        lcd.SetTextColor(LCD_COLOR_BLUE);

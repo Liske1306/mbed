@@ -5,6 +5,7 @@
 
 class LedLcd{
     public:
+        LedLcd();
         void On(uint8_t);
     private:
         LCD_DISCO_F429ZI lcd;
