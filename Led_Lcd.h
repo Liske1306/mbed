@@ -2,7 +2,6 @@
 #define LED_LCD
 
 #include "LCD_DISCO_F429ZI.h"
-#include <cstdint>
 
 class LedLcd{
     public:
