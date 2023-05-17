@@ -1,12 +1,13 @@
 #include "Keyboard_Ts.h"
 
-KeyboardTs::KeyboardTs(){
+KeyboardTs::KeyboardTs(uint8_t ucCurrentRow){
     ts.Init(240, 320);
+    ucRow = ucCurrentRow;
 }
 
 KeyboardButtons KeyboardTs::eRead(){
     ts.GetState(&TS_State);      
-    if (TS_State.TouchDetected && TS_State.X <= 80)
+    if (TS_State.TouchDetected && TS_State.X <= ((ucRow+1)*80) && TS_State.X >= (ucRow*80))
     {
         switch(TS_State.Y/80){
             case 0:
