@@ -7,10 +7,9 @@
 class KeyboardTsLcd{
     public:
         KeyboardTsLcd(uint8_t = 0);
-        void eRead();
+        KeyboardButtons eRead();
     private:
         LedLcd* pLed;
-        LedLcd* pLedReverse;
         KeyboardTs* pKeyboard;
 };
 

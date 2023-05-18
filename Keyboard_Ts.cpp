@@ -1,26 +1,22 @@
 #include "Keyboard_Ts.h"
 
+#define ButtonWidth 80
+#define ButtonHeight 80
+#define ScreenSizeX 240
+#define ScreenSizeY 320
+
 KeyboardTs::KeyboardTs(uint8_t ucCurrentRow){
-    ts.Init(240, 320);
+    ts.Init(ScreenSizeX, ScreenSizeY);
     ucRow = ucCurrentRow;
 }
 
 KeyboardButtons KeyboardTs::eRead(){
-    ts.GetState(&TS_State);      
-    if (TS_State.TouchDetected && TS_State.X <= ((ucRow+1)*80) && TS_State.X >= (ucRow*80))
+    ts.GetState(&TS_State);
+    KeyboardButtons arrButtons[4] = {BUTTON_0, BUTTON_1, BUTTON_2, BUTTON_3};
+
+    if (TS_State.TouchDetected && TS_State.X <= ((ucRow+1)*ButtonWidth) && TS_State.X >= (ucRow*ButtonWidth))
     {
-        switch(TS_State.Y/80){
-            case 0:
-                return BUTTON_0;
-            case 1:
-                return BUTTON_1;
-            case 2:
-                return BUTTON_2;
-            case 3:
-                return BUTTON_3;
-            default:
-                return RELEASED;
-        }
+        return arrButtons[TS_State.Y/ButtonHeight];
     }
     return RELEASED;
 }

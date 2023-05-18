@@ -10,6 +10,8 @@ class LedLcd{
     private:
         LCD_DISCO_F429ZI lcd;
         uint8_t ucRow;
+
+        void DrawKeyboardTile(uint8_t, uint64_t);
 };
 
 #endif
